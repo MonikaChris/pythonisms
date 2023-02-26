@@ -9,10 +9,14 @@ insert(value) - inserts value in the BST if not already there, preserving sorted
 
 get_values() - returns a list of values in order
 
+print_levels() - returns a string reprsenting the nodes in each level of the BST
+
+Magic Methods:
+
 iter - BST's constructed from this class are iterable and can be used with a for in loop and with list 
 comprehension.
 
-print_levels() - returns a string reprsenting the nodes in each level of the BST
+eq - checks if 2 BST's are equal using == or !=
 
 
 ### Run
