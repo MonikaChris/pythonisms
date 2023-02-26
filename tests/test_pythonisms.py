@@ -101,6 +101,19 @@ def test_levels_empty():
     assert actual == expected
 
 
+def test_unequal_trees(tree1, tree2):
+    assert tree1 != tree2
+
+
+def test_equal_trees1(tree1):
+    assert tree1 == tree1
+
+
+def test_equal_trees2(tree2):
+    assert tree2 == tree2
+
+
+
 @pytest.fixture
 def tree1():
     #       (4)
@@ -119,4 +132,31 @@ def tree1():
     node2.left = node1
 
     tree = BST(node4)
+    return tree
+
+
+@pytest.fixture
+def tree2():
+    #       (10)
+    #      /    \
+    #   (8)     (15)
+    #   / \     /  \
+    # (4) (9)  (12) (22)
+
+    node10 = Node(10)
+    node8 = Node(8)
+    node15 = Node(15)
+    node4 = Node(4)
+    node9 = Node(9)
+    node12 = Node(12)
+    node22 = Node(22)
+
+    node10.left = node8
+    node10.right = node15
+    node8.left = node4
+    node8.right = node9
+    node15.left = node12
+    node15.right = node22
+
+    tree = BST(node10)
     return tree
