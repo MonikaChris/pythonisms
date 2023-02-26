@@ -41,6 +41,10 @@ class BST:
 
         return walk(self.root, [])
 
+    def __iter__(self):
+        yield from self.get_values()
+
+
 
 
 

@@ -51,6 +51,32 @@ def test_insert_redundant_nodes(tree1):
     assert actual == expected
 
 
+def test_for_loop(tree1):
+    nodes = []
+
+    for node in tree1:
+        nodes.append(node)
+
+    assert nodes == tree1.get_values()
+
+
+def test_list_comp(tree1):
+    nodes = [node for node in tree1.get_values()]
+
+    assert nodes == tree1.get_values()
+
+
+def test_add_then_loop(tree1):
+    tree1.insert(4)
+    tree1.insert(3)
+
+    actual = [node for node in tree1.get_values()]
+    expected = [1, 2, 3, 4, 5]
+
+    assert actual == expected
+
+
+
 @pytest.fixture
 def tree1():
     #       (4)
@@ -58,7 +84,6 @@ def tree1():
     #    (2)   (5)
     #    / \   / \
     #  (1)
-
 
     node1 = Node(1)
     node2 = Node(2)
