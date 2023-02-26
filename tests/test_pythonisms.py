@@ -76,6 +76,30 @@ def test_add_then_loop(tree1):
     assert actual == expected
 
 
+def test_levels(tree1):
+    actual = tree1.print_levels()
+    expected = "(4) -> (2) (5) -> (1) -> "
+
+    assert actual == expected
+
+
+def test_add_levels(tree1):
+    tree1.insert(6)
+    tree1.insert(7)
+
+    actual = tree1.print_levels()
+    expected = "(4) -> (2) (5) -> (1) (6) -> (7) -> "
+
+    assert actual == expected
+
+
+def test_levels_empty():
+    tree = BST()
+
+    actual = tree.print_levels()
+    expected = ""
+    assert actual == expected
+
 
 @pytest.fixture
 def tree1():

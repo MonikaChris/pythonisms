@@ -1,3 +1,22 @@
+from functools import wraps
+
+
+def pretty_print_tree(func):
+    """
+    Formats tree output.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        visual = ""
+        levels = func(*args, **kwargs)
+        for level in levels:
+            for val in level:
+                visual += f"({val}) "
+            visual += "-> "
+        return visual
+    return wrapper
+
+
 class BST:
     """
     Binary Search Tree class that supports inserting and removing nodes, as well as iterating over the nodes in order.
@@ -44,10 +63,31 @@ class BST:
     def __iter__(self):
         yield from self.get_values()
 
+    @pretty_print_tree
+    def print_levels(self):
+        """
+        Returns a string showing the values in each level of the tree.
+        """
+        q = []
+        if self.root:
+            q.append(self.root)
 
+        levels = []
 
+        while q:
+            level = []
+            for i in range(len(q)):
+                cur = q.pop(0)
+                level.append(cur.val)
 
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
 
+            levels.append(level)
+
+        return levels
 
 
 class Node:
